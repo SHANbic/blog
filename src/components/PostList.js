@@ -5,13 +5,16 @@ import { fetchPosts } from "../actions";
 class PostList extends React.Component {
   componentDidMount() {
     this.props.fetchPosts();
+    console.log(this.props.posts);
   }
   render() {
     return <h1>Post List</h1>;
   }
 }
-
+const mapStateToProps = state => {
+  return { posts: state.posts };
+};
 export default connect(
-  null,
+  mapStateToProps,
   { fetchPosts }
 )(PostList);
